@@ -1,0 +1,18 @@
+name: "Post message to xroute"
+
+inputs:
+  message:
+    description: "The message to send"
+    required: true
+  url:
+    description: "The URL to send message"
+    required: false
+    default: "https://xroute-75418226798.asia-northeast1.run.app"
+
+runs:
+  using: "composite"
+  steps:
+    - uses: m-mizutani/xroute-action@main
+      with:
+        url: ${{ github.event.inputs.url }}
+        message: ${{ github.event.inputs.message }}
